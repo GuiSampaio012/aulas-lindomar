@@ -1,4 +1,4 @@
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Feather} from '@expo/vector-icons'
@@ -92,20 +92,26 @@ export default function Routers({navigation}){
     return(
         <NavigationContainer>
             <Pilha.Navigator>
-                <Pilha.Screen
-                        name="Login"
-                        component={Login}
-                        options={{ title: false, headerShown: false }}
-                />     
+ 
                 <Pilha.Screen
                     name="NavBar"
                     component={NavBar}
-                    options={{ title: false, headerShown: false }}
+                    options={{ title: '', headerShown: false }}
                 />
+
+
+                {/* para deixar o login sem aparecer a navbar, deixar ele em primeiro */}
+                <Pilha.Screen
+                    name="Login"
+                    component={Login}
+                    options={{ title: 'Login', headerShown: false }}
+                />
+
+
                 <Pilha.Screen
                     name="Home"
                     component={Home}
-                    options={{ title: false, headerShown: false }}
+                    options={{ title: 'Home', headerShown: false }}
                 />
                 {/* <Pilha.Screen
                     name="Emprestimo"
@@ -131,17 +137,12 @@ export default function Routers({navigation}){
                     name="Financias"
                     component={Financias}
                     options={{ title: 'Financias' }}
-                />
+                />*/}
                 <Pilha.Screen
                     name="Extrato"
                     component={Extrato}
                     options={{ title: 'Extrato' }}
                 />
-                <Pilha.Screen
-                    name="Delete"
-                    component={Delete}
-                    options={{ title: 'Login Lindomar' }}
-                /> */}
                 <Pilha.Screen
                     name="Cadastro"
                     component={Cadastro}

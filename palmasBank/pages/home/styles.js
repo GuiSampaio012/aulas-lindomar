@@ -46,24 +46,39 @@ const styles = StyleSheet.create({
     saldoReal:{
         fontSize: '65px',
     },
+    // acoes:{
+    //     width: '75%',
+    //     height: '100%',
+    //     flex:1,
+    //     backgroundColor:'red',
+    //     display: 'flex',
+    //     flexWrap: "wrap",
+    //     justifyContent: "space-between",
+    //     flexDirection: "row",
+    //     backgroundColor: '#A4D2BC'
+    // },
+    // abaItens:{
+    //     marginTop:'10px',
+    //     padding: '10px',
+    //     width: '100%',
+    //     display: 'flex',
+    //     alignItems: 'center',
+    //     height:'65%',
+    //     backgroundColor:'#A4D2BC'
+    // },
     acoes:{
-        width: '75%',
-        height: '100%',
-        flex:1,
-        backgroundColor:'red',
         display: 'flex',
-        flexWrap: "wrap",
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         flexDirection: "row",
-        backgroundColor: '#A4D2BC'
+        backgroundColor: '#A4D2BC',
+        marginBottom: '20px',
     },
     abaItens:{
         marginTop:'10px',
         padding: '10px',
-        backgroundColor:'black',
-        display: 'flex',
-        alignItems: 'center',
-        height:'65%',
+        width: '100%',
+        justifyContent: "center",
+        height:'66%',
         backgroundColor:'#A4D2BC'
     },
     itens:{

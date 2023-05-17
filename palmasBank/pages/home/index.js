@@ -66,19 +66,24 @@ export default function Home() {
                             extrato
                         </View>
                     </TouchableOpacity>
+                </View>
+                    
+                <View style={styles.acoes}>
 
                     <TouchableOpacity>
                         <View style={styles.itens}>
                             cartão de crédito
                         </View>
                     </TouchableOpacity>
-
+                  
                     <TouchableOpacity>
                         <View style={styles.itens}>
                             investimentos
                         </View>
                     </TouchableOpacity>
-                    
+                </View>
+
+                <View style={styles.acoes}>               
                     <TouchableOpacity>
                         <View style={styles.itens}>
                             seguros
@@ -90,6 +95,7 @@ export default function Home() {
                             financias
                         </View>
                     </TouchableOpacity>
+                </View>    
                     
                     {/* <View style={styles.itens}>
                         transferencias
@@ -97,7 +103,7 @@ export default function Home() {
                     {/* <View style={styles.itens}>
                         atendimento
                     </View> */}
-                </View>
+                
             </View>
 
         </View>

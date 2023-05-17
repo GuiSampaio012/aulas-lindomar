@@ -5,9 +5,8 @@ import Routers from './routers'
 
 export default function App() {
   return (
-    // <Routers/>
-    // <Login/>
-    <Home/>
+    <Routers/>
+    //<Login/>    
   );
 }
 

@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import Arvores from '../../assets/images-removebg-preview.png'
+import { useNavigation } from '@react-navigation/native'
 // import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 // import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
 // import { storage, db } from '../firebaseConfig'
 // import { collection, addDoc } from 'firebase/firestore'
 
-export default function Cadastro({navigation}) {
+export default function Cadastro() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [semiSenha, setSemiSenha] = useState('')
-    const auth = getAuth();
+
+    const navigation = useNavigation()
    
 
 
@@ -47,73 +49,73 @@ export default function Cadastro({navigation}) {
 
     
     //######################## Imagem ############################
-    useEffect(() => {
-      if (!image) {
-        setPreView(undefined)
-        return
-      }
+    // useEffect(() => {
+    //   if (!image) {
+    //     setPreView(undefined)
+    //     return
+    //   }
   
-      const objectUrl = URL.createObjectURL(image)
-      setPreView(objectUrl)
+    //   const objectUrl = URL.createObjectURL(image)
+    //   setPreView(objectUrl)
   
-      return () => URL.revokeObjectURL(objectUrl)
-    }, [image])
+    //   return () => URL.revokeObjectURL(objectUrl)
+    // }, [image])
   
     //######################## Fim Imagem ########################
   
-    async function adicionar(){
-        await addDoc(collection(db, 'alunos'), {
-          name: nome,
-          email: email,
-          status: false,
-          image: nome.replace(/ +/g, '') + '_' + image.name
-        })
+    // async function adicionar(){
+    //     await addDoc(collection(db, 'alunos'), {
+    //       name: nome,
+    //       email: email,
+    //       status: false,
+    //       image: nome.replace(/ +/g, '') + '_' + image.name
+    //     })
     
-        setEmail('')
-        setNome('')
-        setTexto('Cadastrado com Sucesso!')
-        setPreView(undefined)
-    }
+    //     setEmail('')
+    //     setNome('')
+    //     setTexto('Cadastrado com Sucesso!')
+    //     setPreView(undefined)
+    // }
 
 
-    const upload = e => {
-      e.preventDefault()
+    // const upload = e => {
+    //   e.preventDefault()
   
-      const file = image
+    //   const file = image
   
-      if (!file) {
-        console.log('Faltou imagem!')
-        return
-      }
+    //   if (!file) {
+    //     console.log('Faltou imagem!')
+    //     return
+    //   }
   
-      if (!nome) {
-        console.log('Faltou nome!')
-        return
-      }
+    //   if (!nome) {
+    //     console.log('Faltou nome!')
+    //     return
+    //   }
   
-      if (!email) {
-        console.log('Faltou e-mail!')
-        return
-      }
+    //   if (!email) {
+    //     console.log('Faltou e-mail!')
+    //     return
+    //   }
   
-      if (image == null) return
+    //   if (image == null) return
   
-      const storageRef = ref(
-        storage,
-        `images/${nome.replace(/ +/g, '') + '_' + image.name}`
-      )
-      const uploadTask = uploadBytesResumable(storageRef, file)
+    //   const storageRef = ref(
+    //     storage,
+    //     `images/${nome.replace(/ +/g, '') + '_' + image.name}`
+    //   )
+    //   const uploadTask = uploadBytesResumable(storageRef, file)
   
-      uploadTask.on('state_changed', snapshot => {
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        )
-        setTimeout(() => {
-          setProgressoPercent(progress), 1000
-        })
-      })
-      adicionar()
-    }
+    //   uploadTask.on('state_changed', snapshot => {
+    //     const progress = Math.round(
+    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+    //     )
+    //     setTimeout(() => {
+    //       setProgressoPercent(progress), 1000
+    //     })
+    //   })
+    //   adicionar()
+    // }
   
 
 
