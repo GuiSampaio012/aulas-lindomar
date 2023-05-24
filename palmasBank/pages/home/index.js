@@ -55,9 +55,9 @@ export default function Home() {
             <View style={styles.abaItens}>
                 <View style={styles.acoes}>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={()=>navigation.navigate('Transferencia')}>
                         <View style={styles.itens}>
-                            emprestimo
+                            transferências
                         </View>
                     </TouchableOpacity>
 
@@ -84,9 +84,10 @@ export default function Home() {
                 </View>
 
                 <View style={styles.acoes}>               
+                    
                     <TouchableOpacity>
                         <View style={styles.itens}>
-                            seguros
+                            emprestimo
                         </View>
                     </TouchableOpacity>
                     

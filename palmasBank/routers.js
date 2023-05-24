@@ -10,6 +10,7 @@ import Update from './pages/update'
 import Delete from './pages/delete'
 import Extrato from "./pages/extrato";
 import Cadastro from "./pages/cadastro";
+import Transferencia from "./pages/transferencia";
 
 const Pilha = createStackNavigator()
 const Nav = createBottomTabNavigator()
@@ -47,14 +48,14 @@ function NavBar(){
                 }}
             />
 
-            <Nav.Screen name="Create" component={Create}
+            {/* <Nav.Screen name="Create" component={Create}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({size, color})=>(
                         <Feather name="plus-square" size={size} color={color}/>
                     )
                 }}
-            />
+            /> */}
 
             <Nav.Screen name="Read" component={Read}
                 options={{
@@ -113,6 +114,11 @@ export default function Routers({navigation}){
                     component={Home}
                     options={{ title: 'Home', headerShown: false }}
                 />
+                <Pilha.Screen
+                    name="Transferencia"
+                    component={Transferencia}
+                    options={{ title: 'Transferência' }}
+                />
                 {/* <Pilha.Screen
                     name="Emprestimo"
                     component={Emprestimo}
@@ -129,11 +135,6 @@ export default function Routers({navigation}){
                     options={{ title: 'Investimentos' }}
                 />
                 <Pilha.Screen
-                    name="Seguros"
-                    component={Seguros}
-                    options={{ title: 'Seguros' }}
-                />
-                <Pilha.Screen
                     name="Financias"
                     component={Financias}
                     options={{ title: 'Financias' }}
@@ -141,7 +142,7 @@ export default function Routers({navigation}){
                 <Pilha.Screen
                     name="Extrato"
                     component={Extrato}
-                    options={{ title: 'Extrato' }}
+                    options={{ title: 'Extrato' }} 
                 />
                 <Pilha.Screen
                     name="Cadastro"
