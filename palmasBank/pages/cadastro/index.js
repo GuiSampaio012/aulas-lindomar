@@ -14,17 +14,21 @@ export default function Cadastro() {
     const [semiSenha, setSemiSenha] = useState('')
 
     const navigation = useNavigation()
+
+    const [nome, setNome] = useState('');
+    const [cpf, setCpf] = useState('');
+    const foto = "teste"
+    const [data_nascimento, setData_nascimento] = useState('');
+    const [celular, setCelular] = useState('');
+    const tipo_cliente = "F"
+    const dataReal = data_nascimento
    
-
-
-
-    const [texto, setTexto] = useState()
-    const [nome, setNome] = useState()
-    const [progressPercent, setProgressoPercent] = useState(0)
-    const [imgUrl, setImgUrl] = useState()
-    const [image, setImage] = useState()
-    const [preview, setPreView] = useState()
-  
+    // const [texto, setTexto] = useState()
+    // const [nome, setNome] = useState()
+     const [progressPercent, setProgressoPercent] = useState(0)
+     const [imgUrl, setImgUrl] = useState()
+     const [image, setImage] = useState()
+     const [preview, setPreView] = useState()
 
 
     const btCadastro = () => {
@@ -47,76 +51,6 @@ export default function Cadastro() {
         }
     }
 
-    
-    //######################## Imagem ############################
-    // useEffect(() => {
-    //   if (!image) {
-    //     setPreView(undefined)
-    //     return
-    //   }
-  
-    //   const objectUrl = URL.createObjectURL(image)
-    //   setPreView(objectUrl)
-  
-    //   return () => URL.revokeObjectURL(objectUrl)
-    // }, [image])
-  
-    //######################## Fim Imagem ########################
-  
-    // async function adicionar(){
-    //     await addDoc(collection(db, 'alunos'), {
-    //       name: nome,
-    //       email: email,
-    //       status: false,
-    //       image: nome.replace(/ +/g, '') + '_' + image.name
-    //     })
-    
-    //     setEmail('')
-    //     setNome('')
-    //     setTexto('Cadastrado com Sucesso!')
-    //     setPreView(undefined)
-    // }
-
-
-    // const upload = e => {
-    //   e.preventDefault()
-  
-    //   const file = image
-  
-    //   if (!file) {
-    //     console.log('Faltou imagem!')
-    //     return
-    //   }
-  
-    //   if (!nome) {
-    //     console.log('Faltou nome!')
-    //     return
-    //   }
-  
-    //   if (!email) {
-    //     console.log('Faltou e-mail!')
-    //     return
-    //   }
-  
-    //   if (image == null) return
-  
-    //   const storageRef = ref(
-    //     storage,
-    //     `images/${nome.replace(/ +/g, '') + '_' + image.name}`
-    //   )
-    //   const uploadTask = uploadBytesResumable(storageRef, file)
-  
-    //   uploadTask.on('state_changed', snapshot => {
-    //     const progress = Math.round(
-    //       (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-    //     )
-    //     setTimeout(() => {
-    //       setProgressoPercent(progress), 1000
-    //     })
-    //   })
-    //   adicionar()
-    // }
-  
 
 
     return (

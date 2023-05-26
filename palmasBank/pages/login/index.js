@@ -10,21 +10,8 @@ import { useNavigation } from '@react-navigation/native'
 export default function Login() {
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
+    const [logado, setLogado] = useState(false)
     const navigation = useNavigation()
-    // const auth = getAuth()
-
-    // const btLogin = () => {
-    //     signInWithEmailAndPassword(auth, email, password)
-    //         .then((userCredential) => {
-    //             const user = userCredential.user;
-    //             navigation.navigate('Create')
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             console.log(errorMessage)
-    //         });
-    // }
 
     const btCadastro = () => {
         navigation.navigate('Cadastro')
@@ -33,16 +20,17 @@ export default function Login() {
 
 
     const logar = () => {
-        console.log('function logar:');
         // essa funcão LOGA
         axios.post('http://127.0.0.1:8000/auth/jwt/create', {
-          username: login,
+          email: login,
           password: senha
         }).then((res) =>{ 
-        localStorage.setItem('dados',JSON.stringify(res.data))
-        navigation.navigate('Home')})
-            
-    
+            localStorage.setItem('dados',JSON.stringify(res.data))
+            navigation.navigate('Home')
+        })
+        console.log('function logar:');
+        console.log(login)
+        console.log(senha)
     }
     
     
