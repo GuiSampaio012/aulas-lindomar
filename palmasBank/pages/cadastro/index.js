@@ -3,77 +3,97 @@ import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import styles from './styles'
 import Arvores from '../../assets/images-removebg-preview.png'
 import { useNavigation } from '@react-navigation/native'
-// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage'
-// import { storage, db } from '../firebaseConfig'
-// import { collection, addDoc } from 'firebase/firestore'
+import axios from 'axios'
 
-export default function Cadastro() {
+const Cadastro=({navigation})=> {
+    const navigate = useNavigation()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [semiSenha, setSemiSenha] = useState('')
 
-    const navigation = useNavigation()
-
+    const ativa = "A"
+    const saldo = 1000
     const [nome, setNome] = useState('');
     const [cpf, setCpf] = useState('');
     const foto = "teste"
     const [data_nascimento, setData_nascimento] = useState('');
     const [celular, setCelular] = useState('');
     const tipo_cliente = "F"
-    const dataReal = data_nascimento
    
-    // const [texto, setTexto] = useState()
-    // const [nome, setNome] = useState()
-     const [progressPercent, setProgressoPercent] = useState(0)
-     const [imgUrl, setImgUrl] = useState()
-     const [image, setImage] = useState()
-     const [preview, setPreView] = useState()
+    // const [progressPercent, setProgressoPercent] = useState(0)
+    // const [imgUrl, setImgUrl] = useState()
+    // const [image, setImage] = useState()
+    // const [preview, setPreView] = useState()
 
-
-    const btCadastro = () => {
+    const cadastrar = () => {
+        // essa funcão CADASTRA
         if (semiSenha == password){
-            createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                navigation.navigate('Create')
-                {upload()}
+            axios.post('http://127.0.0.1:8000/auth/users/', {
+            nome: nome,
+            cpf: cpf,
+            foto_logo:foto,
+            data_nascimento:data_nascimento,
+            celular:celular,
+            tipo_cliente:tipo_cliente,
+            email:email,
+            password: password
+            }).then((res) =>{ 
+                if(res.status==200||res.status==201) {
+                    console.log(res.data.id)
+                localStorage.setItem('dadosCad',JSON.stringify(res.data))
+                    axios.post('http://127.0.0.1:8000/crud/contas/', {
+                        cliente_conta:res.data.id,
+                        // data_abertura:data_abertura,
+                        // agencia:agencia,
+                        // numero:numero,
+                        ativa:ativa,
+                        saldo:saldo
+
+                    },/*{headers:{Authotization:` JWT ${a}`}}*/)
+                    .then((res) =>{
+                        console.log(res.data);
+                    })
+                }
             })
-            .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                console.log(errorMessage)
-            });
+            navigation.navigate('Login')
+            console.log('deu certooooo')
         }
         else{
             console.log('senha está incorreta')
             alert('senha incorreta')
         }
+        
+        console.log('function cadastrar:');
     }
 
-
+    // const btCadastro = () => {
+    //     if (semiSenha == password){
+    //         createUserWithEmailAndPassword(auth, email, password)
+    //         .then((userCredential) => {
+    //             const user = userCredential.user;
+    //             navigate('Create')
+    //             {upload()}
+    //         })
+    //         .catch((error) => {
+    //             const errorCode = error.code;
+    //             const errorMessage = error.message;
+    //             console.log(errorMessage)
+    //         });
+    //     }
+    //     else{
+    //         console.log('senha está incorreta')
+    //         alert('senha incorreta')
+    //     }
+    // }
 
     return (
         <View style={styles.container}>
 
             <View style={styles.caixote}>
-                {/* <View>
-                    <img style={styles.img} src={Arvores}/>
-                </View> */}
-
-                {/* <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Nome'
-                        keyboardType='text'
-                    />
-                </View> */}
-
                 <View style={styles.caixa}>
                     <TextInput
                         style={styles.entrada}
                         placeholder='Nome'
-                        value={nome}
                         onChangeText={(e) => {setNome(e)}}
                     />
                 </View>
@@ -81,9 +101,32 @@ export default function Cadastro() {
                 <View style={styles.caixa}>
                     <TextInput
                         style={styles.entrada}
-                        placeholder='email'
+                        placeholder='Cpf'
+                        onChangeText={(e) => {setCpf(e)}}
+                    />
+                </View>
+
+                <View style={styles.caixa}>
+                    <TextInput
+                        style={styles.entrada}
+                        placeholder='Data de Nascimento'
+                        onChangeText={(e) => {setData_nascimento(e)}}
+                    />
+                </View>
+
+                <View style={styles.caixa}>
+                    <TextInput
+                        style={styles.entrada}
+                        placeholder='Celular'
+                        onChangeText={(e) => {setCelular(e)}}
+                    />
+                </View>
+
+                <View style={styles.caixa}>
+                    <TextInput
+                        style={styles.entrada}
+                        placeholder='Email'
                         keyboardType='email'
-                        value={email}
                         onChangeText={(e) => setEmail(e)}
                     />
                 </View>
@@ -94,7 +137,6 @@ export default function Cadastro() {
                         style={styles.entrada}
                         placeholder='Senha'
                         keyboardType='text'
-                        value={semiSenha}
                         onChangeText={(e) => setSemiSenha(e)}
                     />
                 </View>
@@ -105,12 +147,11 @@ export default function Cadastro() {
                         style={styles.entrada}
                         placeholder='Confirme a Senha'
                         keyboardType='text'
-                        value={password}
                         onChangeText={(e) => setPassword(e)}
                     />
                 </View>
 
-                <View style={styles.caixa}> 
+                {/* <View style={styles.caixa}> 
                     <View style={styles.foto0}>
                         <img src={preview} style={styles.foto1} />
                     </View>
@@ -126,39 +167,24 @@ export default function Cadastro() {
 
                     <View>
                         <Text style={styles.sucesso}>{texto}</Text>
-                    </View>
-                </View>
+                    </View> 
+                </View> */}
 
                 <View style={styles.caixa}>
                     <TouchableOpacity
                         style={styles.botao}
-                        onPress = {() => btCadastro()}
+                        onPress = {() => cadastrar()}
                     >
                         <Text style={styles.texto}>Cadastrar</Text>
                     </TouchableOpacity>
                 </View>
-
-
                 
-
-                
-           
                 {/* <TouchableOpacity style={styles.btn} onPress={upload}>
                     <Text style={styles.texto}>Upload</Text>
                 </TouchableOpacity> */}
-
             </View>
-
-
-
-            {/* <View style={styles.container2}> */}
-
-               
-
-            {/* </View> */}
-
-            
 
         </View>
     )
 }
+export default Cadastro;

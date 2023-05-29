@@ -3,27 +3,27 @@ import {Fontisto} from '@expo/vector-icons'
 import styles from './styles'
 import { useNavigation } from '@react-navigation/native'
 
-export default function Home() {
+export default function Home({logado}) {
     const navigation = useNavigation()
     const deslogar = () => {
         //3 etapas
         //1 - limpar localstorage
         localStorage.clear()
         //2 - alterar o state setLogado
-        setLogado(false)
+        console.log(logado)
+        logado = false
         //3 - redirecionar para o login
-        navigate('/login')
+        navigation.navigate('Login')
     }
     return (
         <View style={styles.container}>
             <View style={styles.banner}>
                 <View style={styles.menu}>
-
                     <View style={styles.figura}>
                         <TouchableOpacity
-                            onPress={()=>navigation.navigate('Login')}
+                            onPress={()=>deslogar()}
                         >
-                            <Fontisto name={'user-secret'} size={35} color='black'/>
+                            <Text style={styles.deslogar}>DESLOGAR </Text>
                         </TouchableOpacity>
                         
                     </View>
@@ -31,18 +31,9 @@ export default function Home() {
                         <TouchableOpacity
                             onPress={()=>navigation.navigate('Login')}
                         >
-                            <Fontisto name={'user-secret'} size={35} color='black'/>
+                            <Fontisto name={'male'} size={35} color='black'/>
                         </TouchableOpacity>
-                        
-                    </View>
-
-                    {/* <View style={styles.subMenu}>
-                        <Text>Suporte</Text>
-                        <Text>Downloads</Text>
-                        <Text>Contact</Text>
-                    </View> */}
-                    
-                    
+                    </View>           
                 </View>  
             </View>
 
@@ -55,46 +46,46 @@ export default function Home() {
             <View style={styles.abaItens}>
                 <View style={styles.acoes}>
 
-                    <TouchableOpacity onPress={()=>navigation.navigate('Transferencia')}>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens} onPress={()=>navigation.navigate('Transferencia')}>
+                        <Text>
                             transferências
-                        </View>
+                        </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=>navigation.navigate('Extrato')}>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens} onPress={()=>navigation.navigate('Extrato')}>
+                        <Text>
                             extrato
-                        </View>
+                        </Text>
                     </TouchableOpacity>
                 </View>
                     
                 <View style={styles.acoes}>
 
-                    <TouchableOpacity>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens}>
+                        <Text>
                             cartão de crédito
-                        </View>
+                        </Text>
                     </TouchableOpacity>
                   
-                    <TouchableOpacity>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens}>
+                        <Text>
                             investimentos
-                        </View>
+                        </Text>
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.acoes}>               
                     
-                    <TouchableOpacity>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens}>
+                        <Text>
                             emprestimo
-                        </View>
+                        </Text>
                     </TouchableOpacity>
                     
-                    <TouchableOpacity>
-                        <View style={styles.itens}>
+                    <TouchableOpacity style={styles.itens}>
+                        <Text>
                             financias
-                        </View>
+                        </Text>
                     </TouchableOpacity>
                 </View>    
                     

@@ -1,5 +1,5 @@
-import { NavigationContainer, useNavigation } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Feather} from '@expo/vector-icons'
 import Home from './pages/home'
@@ -9,10 +9,10 @@ import Read from './pages/read'
 import Update from './pages/update'
 import Delete from './pages/delete'
 import Extrato from "./pages/extrato";
-import Cadastro from "./pages/cadastro";
+import Cadastro from './pages/cadastro';
 import Transferencia from "./pages/transferencia";
 
-const Pilha = createStackNavigator()
+const Pilha = createNativeStackNavigator()
 const Nav = createBottomTabNavigator()
 
 function NavBar(){
@@ -89,26 +89,21 @@ function NavBar(){
     )
 }
 
-export default function Routers({navigation}){
+export default function Routers(){
     return(
         <NavigationContainer>
             <Pilha.Navigator>
- 
                 <Pilha.Screen
                     name="NavBar"
                     component={NavBar}
                     options={{ title: '', headerShown: false }}
                 />
-
-
                 {/* para deixar o login sem aparecer a navbar, deixar ele em primeiro */}
                 <Pilha.Screen
                     name="Login"
                     component={Login}
                     options={{ title: 'Login', headerShown: false }}
                 />
-
-
                 <Pilha.Screen
                     name="Home"
                     component={Home}
@@ -118,6 +113,11 @@ export default function Routers({navigation}){
                     name="Transferencia"
                     component={Transferencia}
                     options={{ title: 'Transferência' }}
+                />
+                <Pilha.Screen
+                    name="Cadastro"
+                    component={Cadastro}
+                    options={{ title: 'Cadastro', headerShown: true }}
                 />
                 {/* <Pilha.Screen
                     name="Emprestimo"
@@ -144,14 +144,9 @@ export default function Routers({navigation}){
                     component={Extrato}
                     options={{ title: 'Extrato' }} 
                 />
-                <Pilha.Screen
-                    name="Cadastro"
-                    component={Cadastro}
-                    options={{ title: false, headerShown: true }}
-                />
-                
 
             </Pilha.Navigator>
         </NavigationContainer>
     )
 }
+

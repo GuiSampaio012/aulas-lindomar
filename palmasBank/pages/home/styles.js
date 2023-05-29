@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
         backgroundColor:'#D4F8E3'
     },
     menu:{
+        justifyContent:'space-around',
         width: '100%',
         height: 40,
         flexDirection: 'row',
@@ -46,26 +47,10 @@ const styles = StyleSheet.create({
     saldoReal:{
         fontSize: '65px',
     },
-    // acoes:{
-    //     width: '75%',
-    //     height: '100%',
-    //     flex:1,
-    //     backgroundColor:'red',
-    //     display: 'flex',
-    //     flexWrap: "wrap",
-    //     justifyContent: "space-between",
-    //     flexDirection: "row",
-    //     backgroundColor: '#A4D2BC'
-    // },
-    // abaItens:{
-    //     marginTop:'10px',
-    //     padding: '10px',
-    //     width: '100%',
-    //     display: 'flex',
-    //     alignItems: 'center',
-    //     height:'65%',
-    //     backgroundColor:'#A4D2BC'
-    // },
+    deslogar:{
+        fontSize: '25px',
+        color:'#3D8C64'
+    },
     acoes:{
         display: 'flex',
         justifyContent: "space-evenly",

@@ -27,10 +27,11 @@ export default function Login() {
         }).then((res) =>{ 
             localStorage.setItem('dados',JSON.stringify(res.data))
             navigation.navigate('Home')
+            setLogado(true)
         })
-        console.log('function logar:');
         console.log(login)
         console.log(senha)
+        console.log('function logar:');
     }
     
     

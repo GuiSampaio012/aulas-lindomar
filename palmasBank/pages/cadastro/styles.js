@@ -23,43 +23,45 @@ const styles = StyleSheet.create ({
         padding: '20px',
     },
     entrada:{
-        width:200,
-        height: 40,
-        borderBottomWidth: 1,
-        padding: 10,
-        fontSize: 20,
+        width:'200px',
+        height: '40px',
+        borderBottomWidth: '1px',
+        padding: '5px',
+        fontSize: '20px',
         borderColor: '#fff',
         color: 'white'
     },
+    // inputData:{
+    //     width:'200px',
+    //     height: '40px',
+    //     borderBottomWidth: '1px',
+    //     padding: '5px',
+    //     fontSize: '20px',
+    //     borderColor: '#fff',
+    //     color: 'white',
+    //     backgroundColor:'#0C633D'
+    // },
     botao:{
-        width: 80,
-        height: 45,
-        borderRadius: 10,
-        padding: 10,
+        width: '120px',
+        height: '45px',
+        borderRadius: '10px',
+        padding: '10px',
         backgroundColor: '#A4D2BC',
         justifyContent: 'center',
         alignItems: 'center', 
     },
-
-
-
-
-
-
     container2: {
-        // marginTop:"100px",
         flex: 1,
-       
         width: '100%',
         alignItems: 'center',
     },
     texto1: {
-        fontSize: 50,
+        fontSize: '50px',
         color: '#2E8B57',
         fontWeight: 'bold',
     },
     texto2: {
-        fontSize: 30,
+        fontSize: '30px',
     },
     top: {
         flexDirection: 'column',
@@ -69,12 +71,12 @@ const styles = StyleSheet.create ({
     foto0: {
         // marginTop: "60px",
         marginBottom:"20px",
-        padding: 10,
+        padding: '10px',
         alignItems: 'center',
     },
     foto1: {
-        width: 150,
-        height: 150,
+        width: '150px',
+        height: '150px',
         backgroundColor: '#EEE9E9',
         alignItems: 'center',
         borderRadius:"25px",
@@ -83,26 +85,26 @@ const styles = StyleSheet.create ({
     btn: {
         width: '30%',
         height: '30px',
-        padding: 10,
+        padding: '10px',
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor:"#A4D2BC",
-        borderRadius: 5,
+        borderRadius: '5px',
     },
     btnContainer: {
-        pading: 5,
+        pading: '5px',
         justifyContent: 'center',
         alignItems: 'center',
-        height: 50,
+        height: '50px',
         width: '100%',
     },
     sucesso: {
-        fontSize: 10,
+        fontSize: '10px',
         color: '#0f0',
     },
     txtButton: {
         fontFamily: 'Verdana',
-        fontSize: 15,
+        fontSize: '15px',
         color: '#333',
     },
 })
