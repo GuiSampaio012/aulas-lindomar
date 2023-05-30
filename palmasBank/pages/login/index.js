@@ -10,7 +10,6 @@ import { useNavigation } from '@react-navigation/native'
 export default function Login() {
     const [login, setLogin] = useState('')
     const [senha, setSenha] = useState('')
-    const [logado, setLogado] = useState(false)
     const navigation = useNavigation()
 
     const btCadastro = () => {
@@ -27,7 +26,7 @@ export default function Login() {
         }).then((res) =>{ 
             localStorage.setItem('dados',JSON.stringify(res.data))
             navigation.navigate('Home')
-            setLogado(true)
+            // setLogado(true)
         })
         console.log(login)
         console.log(senha)

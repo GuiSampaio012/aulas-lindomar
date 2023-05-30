@@ -6,7 +6,6 @@ import Home from './pages/home'
 import Login from './pages/login'
 import Create from './pages/create'
 import Read from './pages/read'
-import Update from './pages/update'
 import Delete from './pages/delete'
 import Extrato from "./pages/extrato";
 import Cadastro from './pages/cadastro';
@@ -65,16 +64,6 @@ function NavBar(){
                     )
                 }}
             />
-
-            <Nav.Screen name="Update" component={Update}
-                options={{
-                    headerShown: false,
-                    tabBarIcon: ({size, color})=>(
-                        <Feather name="edit" size={size} color={color}/>
-                    )
-                }}
-            />
-
             <Nav.Screen name="Delete" component={Delete}
                 options={{
                     headerShown: false,
@@ -105,6 +94,11 @@ export default function Routers(){
                     options={{ title: 'Login', headerShown: false }}
                 />
                 <Pilha.Screen
+                    name="Cadastro"
+                    component={Cadastro}
+                    options={{ title: 'Cadastro', headerShown: true }}
+                />
+                <Pilha.Screen
                     name="Home"
                     component={Home}
                     options={{ title: 'Home', headerShown: false }}
@@ -113,11 +107,6 @@ export default function Routers(){
                     name="Transferencia"
                     component={Transferencia}
                     options={{ title: 'Transferência' }}
-                />
-                <Pilha.Screen
-                    name="Cadastro"
-                    component={Cadastro}
-                    options={{ title: 'Cadastro', headerShown: true }}
                 />
                 {/* <Pilha.Screen
                     name="Emprestimo"

@@ -2,8 +2,34 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import {Fontisto} from '@expo/vector-icons'
 import styles from './styles'
 import { useNavigation } from '@react-navigation/native'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 export default function Home({logado}) {
+    const[token, setToken] = useState('')
+    const[teste, setTeste] = useState([])
+
+    useEffect(() => {
+        pegartoken()
+    }, [])
+
+    useEffect(() =>{
+        console.log("FOI")
+        axios.get('http://127.0.0.1:8000/crud/contas/', {headers:{Authorization: 'JWT ' + token}}).then((response) => {
+            console.log(response)
+            setTeste(response['data'][0])
+    })
+    },[token])
+
+    const pegartoken = () => {
+        const acesso = localStorage.getItem("dados")
+        let chave =""
+        if (acesso) {
+            chave = JSON.parse(acesso).access
+            setToken(chave)
+        }
+    }
+
     const navigation = useNavigation()
     const deslogar = () => {
         //3 etapas
@@ -15,6 +41,7 @@ export default function Home({logado}) {
         //3 - redirecionar para o login
         navigation.navigate('Login')
     }
+
     return (
         <View style={styles.container}>
             <View style={styles.banner}>
@@ -39,7 +66,7 @@ export default function Home({logado}) {
 
             <View style={styles.caixaSaldo}>
                 <View style={styles.saldo}>
-                    <Text style={styles.saldoReal}> 0,00 R$ </Text>
+                    <Text style={styles.saldoReal}>{teste.saldo} R$</Text>
                 </View>
             </View>
 
