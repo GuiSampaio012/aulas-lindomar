@@ -16,6 +16,7 @@ export default function Transferencia({navigation}) {
 
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
+    const[idCli, setIdCli] = useState('')
     // console.log(teste)  
     // console.log(contaPag)
 
@@ -23,18 +24,19 @@ export default function Transferencia({navigation}) {
         pegartoken()
     }, [])
 
+    useEffect(()=>{
+        axios.get('http://127.0.0.1:8000/crud/clientes/', {headers:{Authorization: 'JWT ' + token}})
+        .then((res) =>{
+            setIdCli(res['data'][0])
+        })
+    },[token])
+
     useEffect(() =>{
-        console.log("FOI")
         axios.get('http://127.0.0.1:8000/crud/contas/', {headers:{Authorization: 'JWT ' + token}}).then((response) => {
             //console.log(response)
             setTeste(response['data'][0])
-    },)
+    })
     },[token])
-
-    useEffect(() => {
-        setContaPag(teste.cliente_conta)
-        console.log(contaPag);
-    }, [teste])
     
     const pegartoken = () => {
         const acesso = localStorage.getItem("dados")
@@ -47,20 +49,21 @@ export default function Transferencia({navigation}) {
     
     function transferencia() { 
         // essa parte da função entra no banco e seleciona os dados da conta pagadora
-        let historico_transferencia = ({ valor_enviado: saldo, conta_transferencia: contaPag, tipo: tipo, conta_remetente: contaRem})
-        axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaPag}`)
+        let historico_transferencia = ({ valor_enviado: saldo, conta_transferencia: teste.cliente_conta, tipo: tipo, conta_remetente: contaRem})
+        axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${teste.cliente_conta}`,{headers:{Authorization: 'JWT ' + token}},)
         .then((res) => {
           let usuario_encontrado = []
           usuario_encontrado.push(res.data[0])
+          console.log(usuario_encontrado)
           usuario_encontrado = usuario_encontrado[0]
           
           //descontando o valor que a conta está pagando
           usuario_encontrado.saldo = parseFloat(usuario_encontrado.saldo) - parseFloat(saldo)
-          axios.put(`http://127.0.0.1:8000/crud/contas/${usuario_encontrado.id}`, usuario_encontrado)
+          axios.put(`http://127.0.0.1:8000/crud/contas/${usuario_encontrado.id}`, {headers:{Authorization: 'JWT ' + token}},usuario_encontrado)
         })
     
         // essa parte da função entra no banco e seleciona os dados da conta remetente
-        axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaRem}`)
+        axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaRem}`,{headers:{Authorization: 'JWT ' + token}},)
         .then((res) => {
           let remetente_encontrado = []
           remetente_encontrado.push(res.data[0])
@@ -68,10 +71,10 @@ export default function Transferencia({navigation}) {
     
           //adicionando o valor que a conta está recebendo
           remetente_encontrado.saldo = parseFloat(remetente_encontrado.saldo) + parseFloat(saldo)
-          axios.put(`http://127.0.0.1:8000/crud/contas/${remetente_encontrado.id}`, remetente_encontrado)
+          axios.put(`http://127.0.0.1:8000/crud/contas/${remetente_encontrado.id}`, {headers:{Authorization: 'JWT ' + token}},remetente_encontrado)
         })
         // adiconando a trasação para o banco
-        axios.post('http://127.0.0.1:8000/crud/transferencia/', historico_transferencia)
+        axios.post('http://127.0.0.1:8000/crud/transferencia/', {headers:{Authorization: 'JWT ' + token}},historico_transferencia)
     }
 
     // useEffect(() => {

@@ -20,10 +20,28 @@ const Cadastro=({navigation})=> {
     const [celular, setCelular] = useState('');
     const tipo_cliente = "F"
    
-    // const [progressPercent, setProgressoPercent] = useState(0)
-    // const [imgUrl, setImgUrl] = useState()
-    // const [image, setImage] = useState()
-    // const [preview, setPreView] = useState()
+    const[token, setToken] = useState('')
+    const[teste, setTeste] = useState([])
+
+    useEffect(() => {
+        pegartoken()
+    }, [])
+
+    // useEffect(() =>{
+    //     axios.get('http://127.0.0.1:8000/crud/contas/', {headers:{Authorization: 'JWT ' + token}}).then((response) => {
+    //         //console.log(response)
+    //         setTeste(response['data'][0])
+    // },)
+    // },[token])
+    
+    const pegartoken = () => {
+        const acesso = localStorage.getItem("dados")
+        let chave =""
+        if (acesso) {
+            chave = JSON.parse(acesso).access
+            setToken(chave)
+        }
+    }
 
     const cadastrar = () => {
         // essa funcão CADASTRA
@@ -40,19 +58,27 @@ const Cadastro=({navigation})=> {
             }).then((res) =>{ 
                 if(res.status==200||res.status==201) {
                     console.log(res.data.id)
-                localStorage.setItem('dadosCad',JSON.stringify(res.data))
-                    axios.post('http://127.0.0.1:8000/crud/contas/', {
-                        cliente_conta:res.data.id,
-                        // data_abertura:data_abertura,
-                        // agencia:agencia,
-                        // numero:numero,
-                        ativa:ativa,
-                        saldo:saldo
-
-                    },/*{headers:{Authotization:` JWT ${a}`}}*/)
-                    .then((res) =>{
-                        console.log(res.data);
+                    localStorage.setItem('dadosCad',JSON.stringify(res.data))
+                    axios.post('http://127.0.0.1:8000/auth/jwt/create', {
+                        email: email,
+                        password: password
+                    }).then((res) =>{ 
+                        localStorage.setItem('dados',JSON.stringify(res.data))
+                        axios.get('http://127.0.0.1:8000/auth/users/me/',  {headers:{Authorization: 'JWT ' + res.data.access}})
+                        .then((response) => {
+                            console.log(response.data)
+                            axios.post('http://127.0.0.1:8000/crud/contas/',{
+                                cliente_conta:response.data.id,
+                                ativa:ativa,
+                                saldo:saldo
+                                },{headers:{Authorization: 'JWT ' + res.data.access}},)
+                                .then((res) =>{
+                                    console.log(res.data);
+                                    navigation.navigate('Home')
+                                })
+                        })    
                     })
+                    
                 }
             })
             navigation.navigate('Login')

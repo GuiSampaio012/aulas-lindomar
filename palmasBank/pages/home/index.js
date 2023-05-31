@@ -8,6 +8,8 @@ import axios from 'axios'
 export default function Home({logado}) {
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
+    const[idCli, setIdCli] = useState('')
+    const[saldo, setSaldo] = useState('')
 
     useEffect(() => {
         pegartoken()
@@ -15,11 +17,20 @@ export default function Home({logado}) {
 
     useEffect(() =>{
         console.log("FOI")
-        axios.get('http://127.0.0.1:8000/crud/contas/', {headers:{Authorization: 'JWT ' + token}}).then((response) => {
-            console.log(response)
-            setTeste(response['data'][0])
-    })
+        axios.get('http://127.0.0.1:8000/auth/users/me/',  {headers:{Authorization: 'JWT ' + token}}).then((response) => {
+            console.log(response.data)
+            axios.get(`http://127.0.0.1:8000/crud/clientes/${response.data.id}`, {headers:{Authorization: 'JWT ' + token}}).then((res) =>{
+                console.log(res.data)
+                axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${response.data.id}`, {headers:{Authorization: 'JWT ' + token}}).then((response) => {
+                    console.log(response.data)
+                    setTeste(response['data'][0])
+                    setSaldo(response['data'][0]['saldo'])
+                })
+            })
+
+        })
     },[token])
+
 
     const pegartoken = () => {
         const acesso = localStorage.getItem("dados")
@@ -66,7 +77,7 @@ export default function Home({logado}) {
 
             <View style={styles.caixaSaldo}>
                 <View style={styles.saldo}>
-                    <Text style={styles.saldoReal}>{teste.saldo} R$</Text>
+                    <Text style={styles.saldoReal}> {saldo} R$</Text>
                 </View>
             </View>
 
