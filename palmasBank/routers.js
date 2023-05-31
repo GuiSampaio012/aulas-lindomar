@@ -4,7 +4,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Feather} from '@expo/vector-icons'
 import Home from './pages/home'
 import Login from './pages/login'
-import Create from './pages/create'
 import Read from './pages/read'
 import Delete from './pages/delete'
 import Extrato from "./pages/extrato";

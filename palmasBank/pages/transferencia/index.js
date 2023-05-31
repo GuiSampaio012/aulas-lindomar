@@ -16,7 +16,8 @@ export default function Transferencia({navigation}) {
 
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
-    console.log(contaPag)
+    // console.log(teste)  
+    // console.log(contaPag)
 
     useEffect(() => {
         pegartoken()
@@ -25,12 +26,16 @@ export default function Transferencia({navigation}) {
     useEffect(() =>{
         console.log("FOI")
         axios.get('http://127.0.0.1:8000/crud/contas/', {headers:{Authorization: 'JWT ' + token}}).then((response) => {
-            console.log(response)
+            //console.log(response)
             setTeste(response['data'][0])
-            setContaPag(teste.cliente_conta)
-    })
+    },)
     },[token])
 
+    useEffect(() => {
+        setContaPag(teste.cliente_conta)
+        console.log(contaPag);
+    }, [teste])
+    
     const pegartoken = () => {
         const acesso = localStorage.getItem("dados")
         let chave =""
@@ -40,7 +45,7 @@ export default function Transferencia({navigation}) {
         }
     }
     
-    function transferencia() {
+    function transferencia() { 
         // essa parte da função entra no banco e seleciona os dados da conta pagadora
         let historico_transferencia = ({ valor_enviado: saldo, conta_transferencia: contaPag, tipo: tipo, conta_remetente: contaRem})
         axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaPag}`)
@@ -84,6 +89,7 @@ export default function Transferencia({navigation}) {
     // }, [])
     
     // useEffect(() => {
+    //     setContaPag(teste.cliente_conta) 
     //     // essa parte da função entra no banco e seleciona os dados da conta pagadora
     //     axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaPag}`)
     //     .then((res) => {
@@ -137,7 +143,8 @@ export default function Transferencia({navigation}) {
 
                     <View style={styles.btn}>
                         <TouchableOpacity style={styles.itens} onPress={()=>transferencia()}>
-                            <Text style={styles.texto2}>
+                            <Text style={styles.texto2}
+                            >
                                 TRANSFERIR
                             </Text>
                         </TouchableOpacity>
