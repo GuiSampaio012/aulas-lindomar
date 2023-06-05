@@ -5,75 +5,74 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#3D8C64',
         flex: 1,
-    },
-    texto1:{
-        fontSize: 25,
-    },
-    banner:{
-        width: '100%',
-        height:50,
-        backgroundColor:'#D4F8E3'
-    },
-    menu:{
-        width: '100%',
-        height: 40,
-        flexDirection: 'row',
-        padding: '5px',
-    },
-    subMenu:{
-        width: '85%',
-        height: 40,
         alignItems: 'center',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: '10px',
+        justifyContent: 'center'
+    },
+    caixote: {
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    img: {
+        width: "200px",
+        height: "200px",
+    },
+    texto:{
+        fontSize: 18,
+        color: 'white'
     }, 
-    figura:{
-        width:'15%',
-        height: 40,
+    caixa:{
+        padding: '20px',
+    },
+    entrada:{
+        display: 'flex',
+        padding: '1px',
+        fontSize: '15px',
+        color: 'white',
+        textAlign:'center',
+        justifyContent: 'center'
+    },
+    botao:{
+        width: '120px',
+        height: '45px',
+        borderRadius: '10px',
+        padding: '10px',
+        backgroundColor: '#A4D2BC',
+        justifyContent: 'center',
         alignItems: 'center', 
     },
-    saldo:{
-        marginTop: '30px',
-        width:"100%",
-        height:"100%",
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+    texto1: {
+        fontSize: '50px',
+        color: '#2E8B57',
+        fontWeight: 'bold',
     },
-    saldoReal:{
-        fontSize: '65px',
+    texto2: {
+        fontSize: '30px',
     },
-    acoes:{
-        width: '75%',
+    top: {
+        flexDirection: 'column',
+        backgroundColor: '#f00',
+    },  
+    sucesso: {
+        fontSize: '10px',
+        color: '#0f0',
+    },
+    guardarInfo:{
+        width: '100%',
         height: '100%',
-        flex:1,
-        backgroundColor:'red',
-        display: 'flex',
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        flexDirection: "row",
-        backgroundColor: '#A4D2BC'
-    },
-    abaItens:{
-        marginTop:'10px',
+        margin: 'auto',
+        flexDirection: 'column',
         padding: '10px',
-        backgroundColor:'black',
-        display: 'flex',
-        alignItems: 'center',
-        height:'100%',
-        backgroundColor:'#A4D2BC'
+        
     },
-    itens:{
+    container2: {
+        backgroundColor:'red',
+        flexDirection: 'row',
+        padding: '3px',
+        marginBottom: '10px',
+        width: '100%',
         alignItems: 'center',
-        alignContent: 'center',
-        justifyContent: 'center',
-        marginTop:'10px',
-        width:'100px',
-        height:'110px',
-        backgroundColor:'#D4F8E3',
-        borderRadius:'10px',
-        textAlign:'center',
+        height:'100px',
+        
     },
 
 })

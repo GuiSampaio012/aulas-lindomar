@@ -5,11 +5,21 @@ import { useNavigation } from '@react-navigation/native'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export default function Home({logado}) {
+export default function Home() {
+    const [logado,setLogado] = useState(false)
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
     const[idCli, setIdCli] = useState('')
     const[saldo, setSaldo] = useState('')
+    const navigation = useNavigation()
+
+    const acesso = localStorage.getItem("dados")
+    let chave =""
+
+    const refresh = () => window.location.reload(true)
+
+    
+
 
     useEffect(() => {
         pegartoken()
@@ -32,25 +42,40 @@ export default function Home({logado}) {
     },[token])
 
 
+    useEffect(() =>{
+        console.log(chave);
+        axios.post(`http://127.0.0.1:8000/auth/jwt/verify/`, {token: chave})
+        .then((response) =>{
+            if(response.status==200 || response.status==201){
+                setLogado(true)
+            }
+            else{
+                setLogado(false) 
+                refresh()
+            }
+        })
+    },[])
+
     const pegartoken = () => {
-        const acesso = localStorage.getItem("dados")
-        let chave =""
         if (acesso) {
             chave = JSON.parse(acesso).access
             setToken(chave)
         }
+        else{
+            chave = 'deu ruim'
+        }
     }
 
-    const navigation = useNavigation()
+    
     const deslogar = () => {
         //3 etapas
         //1 - limpar localstorage
         localStorage.clear()
         //2 - alterar o state setLogado
         console.log(logado)
-        logado = false
+        setLogado(false)
         //3 - redirecionar para o login
-        navigation.navigate('Login')
+        refresh()
     }
 
     return (
@@ -58,20 +83,21 @@ export default function Home({logado}) {
             <View style={styles.banner}>
                 <View style={styles.menu}>
                     <View style={styles.figura}>
-                        <TouchableOpacity
-                            onPress={()=>deslogar()}
-                        >
-                            <Text style={styles.deslogar}>DESLOGAR </Text>
-                        </TouchableOpacity>
-                        
-                    </View>
-                    <View style={styles.figura}>
-                        <TouchableOpacity
+                        {logado? 
+                            <TouchableOpacity
+                                onPress={()=>deslogar()}
+                            >
+                                <Text style={styles.deslogar}>DESLOGAR </Text>
+                            </TouchableOpacity>: 
+
+
+                            <TouchableOpacity
                             onPress={()=>navigation.navigate('Login')}
-                        >
-                            <Fontisto name={'male'} size={35} color='black'/>
-                        </TouchableOpacity>
-                    </View>           
+                            >
+                                <Fontisto name={'male'} size={35} color='black'/>
+                            </TouchableOpacity>
+                        }
+                    </View>
                 </View>  
             </View>
 

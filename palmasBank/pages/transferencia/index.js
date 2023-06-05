@@ -5,7 +5,7 @@ import { TextInput } from 'react-native-web';
 import axios from 'axios';
 
 export default function Transferencia({navigation}) {
-    const [infoCli, setInfoCli] = useState([])
+    const refresh = () => window.location.reload(true)
     const [saldoR, setSaldoR] = useState('')
     const [contaPag,  setContaPag] = useState('')
     const [contaRem,  setContaRem] = useState('')
@@ -15,7 +15,6 @@ export default function Transferencia({navigation}) {
 
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
-    const[idCli, setIdCli] = useState('')
     // console.log(teste)  
     // console.log(contaPag)
 
@@ -62,59 +61,39 @@ export default function Transferencia({navigation}) {
           usuario_encontrado = usuario_encontrado[0]
           
           //descontando o valor que a conta está pagando
-          usuario_encontrado.saldo = parseFloat(usuario_encontrado.saldo) - parseFloat(saldo)
-          axios.put(`http://127.0.0.1:8000/crud/contas/${usuario_encontrado.id}`,usuario_encontrado,{headers:{Authorization: 'JWT ' + token}})
-          .then((res) => {
-            console.log(res.data);
-
-          })
-        })
-        // essa parte da função entra no banco e seleciona os dados da conta remetente
-        axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaRem}`,{headers:{Authorization: 'JWT ' + token}},)
-        .then((res) => {
-          let remetente_encontrado = []
-          remetente_encontrado.push(res.data[0])
-          remetente_encontrado = remetente_encontrado[0]
+          if(saldo > 0 && usuario_encontrado.saldo >= saldo ){
+            usuario_encontrado.saldo = parseFloat(usuario_encontrado.saldo) - parseFloat(saldo)
+            axios.put(`http://127.0.0.1:8000/crud/contas/${usuario_encontrado.id}`,usuario_encontrado,{headers:{Authorization: 'JWT ' + token}})
+            .then((res) => {
+              console.log(res.data);
+            })
+            // essa parte da função entra no banco e seleciona os dados da conta remetente
+            axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaRem}`,{headers:{Authorization: 'JWT ' + token}},)
+            .then((res) => {
+              let remetente_encontrado = []
+              remetente_encontrado.push(res.data[0])
+              remetente_encontrado = remetente_encontrado[0]
     
-          //adicionando o valor que a conta está recebendo
-          remetente_encontrado.saldo = parseFloat(remetente_encontrado.saldo) + parseFloat(saldo)
-          axios.put(`http://127.0.0.1:8000/crud/contas/${remetente_encontrado.id}`,remetente_encontrado,{headers:{Authorization: 'JWT ' + token}})
-          .then((res) => {
-            console.log(res.data);
-
-          })
+              //adicionando o valor que a conta está recebendo
+              remetente_encontrado.saldo = parseFloat(remetente_encontrado.saldo) + parseFloat(saldo)
+              axios.put(`http://127.0.0.1:8000/crud/contas/${remetente_encontrado.id}`,remetente_encontrado,{headers:{Authorization: 'JWT ' + token}})
+              .then((res) => {
+                console.log(res.data);
+              })
+            })
+            // adiconando a trasação para o banco
+            axios.post('http://127.0.0.1:8000/crud/transferencia/', historico_transferencia)
+            refresh()
+          }
+          else if(saldo <= 0){
+            alert('DIGITE UM VALOR MAIOR QUE "0"') 
+          }
+          else{
+            alert('SALDO INSUFICIENTE')
+          }
         })
-        // adiconando a trasação para o banco
-        axios.post('http://127.0.0.1:8000/crud/transferencia/', historico_transferencia)
     }
 
-    // useEffect(() => {
-    //     // buscando o cliente da conta pelo seu id
-    //     axios.get(`http://127.0.0.1:8000/crud/clientes/?filtro=${login}`)
-    //     .then((res) => {
-    //         let cliente_encontrado = []
-    //         cliente_encontrado.push(res.data[0])
-    //         cliente_encontrado = cliente_encontrado[0]
-    //         setInfoCli(cliente_encontrado.id)
-    //         console.log(cliente_encontrado.id)
-    //         setContaPag(cliente_encontrado.id)
-    //     })
-        
-    // }, [])
-    
-    // useEffect(() => {
-    //     setContaPag(teste.cliente_conta) 
-    //     // essa parte da função entra no banco e seleciona os dados da conta pagadora
-    //     axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${contaPag}`)
-    //     .then((res) => {
-    //       let usuario_encontrado = []
-    //       usuario_encontrado.push(res.data[0])
-    //       usuario_encontrado = usuario_encontrado[0]
-    //       console.log(usuario_encontrado)
-    //       setSaldoR(usuario_encontrado.saldo)
-    //       console.log(saldoR)
-    //     })  
-    // },[contaPag])
 
     return (
     <>
