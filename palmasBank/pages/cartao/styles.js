@@ -24,24 +24,13 @@ const styles = StyleSheet.create({
         padding: '20px',
     },
     entrada:{
-        width:'200px',
-        height: '40px',
-        borderBottomWidth: '1px',
-        padding: '5px',
-        fontSize: '20px',
-        borderColor: '#fff',
-        color: 'white'
+        display: 'flex',
+        padding: '1px',
+        fontSize: '15px',
+        color: 'white',
+        textAlign:'center',
+        justifyContent: 'center'
     },
-    // inputData:{
-    //     width:'200px',
-    //     height: '40px',
-    //     borderBottomWidth: '1px',
-    //     padding: '5px',
-    //     fontSize: '20px',
-    //     borderColor: '#fff',
-    //     color: 'white',
-    //     backgroundColor:'#0C633D'
-    // },
     botao:{
         width: '120px',
         height: '45px',
@@ -50,11 +39,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#A4D2BC',
         justifyContent: 'center',
         alignItems: 'center', 
-    },
-    container2: {
-        flex: 1,
-        width: '100%',
-        alignItems: 'center',
     },
     texto1: {
         fontSize: '50px',
@@ -67,46 +51,26 @@ const styles = StyleSheet.create({
     top: {
         flexDirection: 'column',
         backgroundColor: '#f00',
-    },
-    
-    foto0: {
-        // marginTop: "60px",
-        marginBottom:"20px",
-        padding: '10px',
-        alignItems: 'center',
-    },
-    foto1: {
-        width: '150px',
-        height: '150px',
-        backgroundColor: '#EEE9E9',
-        alignItems: 'center',
-        borderRadius:"25px",
-        justifyContent: 'center',
-    },
-    btn: {
-        width: '30%',
-        height: '30px',
-        padding: '10px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor:"#A4D2BC",
-        borderRadius: '5px',
-    },
-    btnContainer: {
-        pading: '5px',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '50px',
-        width: '100%',
-    },
+    },  
     sucesso: {
         fontSize: '10px',
         color: '#0f0',
     },
-    txtButton: {
-        fontFamily: 'Verdana',
-        fontSize: '15px',
-        color: '#333',
+    guardarInfo:{
+        backgroundColor: '#3D8C64',
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+    },
+    container2: {
+        backgroundColor:'#0C633D',
+        flexDirection: 'row',
+        padding: '3px',
+        marginBottom: '10px',
+        width: '100%',
+        alignItems: 'center',
+        height:'100px',
+        
     },
 
 })

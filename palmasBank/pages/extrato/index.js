@@ -53,25 +53,27 @@ export default function Extrato({navigation}) {
 
     return (
         <View style={styles.container}>
-            <View style={styles.caixote}>
-                <View style={styles.caixa}>
-                    <Text style={styles.entrada}>
-                        Aqui aparecerá as suas transações
-                    </Text>
-                </View>
-            </View>   
 
             <View style={styles.guardarInfo}>  
                 {dadosTran.map((dadosTran) => (
-                    <>
-                        <View style={styles.container2} key={dadosTran.id}> 
-                            <Text style={styles.entrada}>{dadosTran.valor_enviado}</Text>
-                            <Text style={styles.entrada}>{dadosTran.conta_transferencia}</Text>
-                            <Text style={styles.entrada}>{dadosTran.tipo}</Text>
-                            <Text style={styles.entrada}>{dadosTran.conta_remetente}</Text>
-                            <Text style={styles.entrada}>{dadosTran.data_hora}</Text>
-                        </View>
-                    </>
+                    <View style={styles.container2} key={dadosTran.id}> 
+                        <table>
+                            <tr>
+                                <th>Valor enviado</th>
+                                <th>Conta pagadora</th>
+                                <th>Tipo de transferencia</th>
+                                <th>Conta remetente</th>
+                                <th>data da transação</th>
+                            </tr>
+                            <tr>
+                                <td><Text style={styles.entrada}>{dadosTran.valor_enviado}</Text></td>
+                                <td><Text style={styles.entrada}>{dadosTran.conta_transferencia}</Text></td>
+                                <td><Text style={styles.entrada}>{dadosTran.tipo}</Text></td>
+                                <td><Text style={styles.entrada}>{dadosTran.conta_remetente}</Text></td>
+                                <td><Text style={styles.entrada}>{dadosTran.data_hora}</Text></td>
+                            </tr>
+                        </table>
+                    </View>
                 ))}
                    
             </View>

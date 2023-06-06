@@ -57,15 +57,13 @@ const styles = StyleSheet.create({
         color: '#0f0',
     },
     guardarInfo:{
+        backgroundColor: '#3D8C64',
         width: '100%',
         height: '100%',
-        margin: 'auto',
         flexDirection: 'column',
-        padding: '10px',
-        
     },
     container2: {
-        backgroundColor:'red',
+        backgroundColor:'#0C633D',
         flexDirection: 'row',
         padding: '3px',
         marginBottom: '10px',
