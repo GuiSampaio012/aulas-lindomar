@@ -17,6 +17,25 @@ const styles = StyleSheet.create({
         fontWeight: '800',
         fontFamily:'URW Chancery L, cursive',
     },
+    sucesso:{
+        color: '#FFFFFF',
+        textAlign: 'center',
+        fontSize: '150%',
+        fontWeight: '800',
+        fontFamily:'URW Chancery L, cursive',
+    },
+    caixa:{
+        padding: '20px',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    caixote:{
+        padding: '150px',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     caixaSaldo:{
         height:'20%',
     },

@@ -5,7 +5,7 @@ import { TextInput } from 'react-native';
 import Card from '../../assets/Card.png'
 import axios from 'axios';
 
-export default function Cartao({navigation}) {
+export default function TelaCartao({navigation}) {
     const[token, setToken] = useState('')
     const[teste, setTeste] = useState([])
 
@@ -44,7 +44,17 @@ export default function Cartao({navigation}) {
             <View style={styles.caixote}>
 
                 <View style={styles.caixa}>
-                    <img style={styles.img} src={Card}/>
+
+                    <View style={styles.card}> 
+                        <View style={styles.sozinho}>
+                            <Text style={styles.numeroCard}>numero</Text>
+                        </View>
+                        <View style={styles.junto}>
+                            <Text style={styles.cvvCard}>cvv</Text>
+                            <Text style={styles.validadeCard}>validade</Text>
+                        </View>
+                    </View>
+                    
                 </View>
 
                 <View style={styles.caixa}>

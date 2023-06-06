@@ -9,6 +9,7 @@ import Delete from './pages/delete'
 import Extrato from "./pages/extrato";
 import Cadastro from './pages/cadastro';
 import Transferencia from "./pages/transferencia";
+import TranRealizada from "./pages/transferencia/tranRealizada";
 
 const Pilha = createNativeStackNavigator()
 const Nav = createBottomTabNavigator()
@@ -127,6 +128,11 @@ export default function Routers(){
                     component={Financias}
                     options={{ title: 'Financias' }}
                 />*/}
+                <Pilha.Screen
+                    name="TranRealizada"
+                    component={TranRealizada}
+                    options={{ title: 'Transferência Realizada', headerShown: true }}
+                />
                 <Pilha.Screen
                     name="Extrato"
                     component={Extrato}

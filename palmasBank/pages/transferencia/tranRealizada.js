@@ -4,7 +4,7 @@ import styles from './styles'
 import { TextInput } from 'react-native';
 import TranRea from '../../assets/tranRea.png'
 
-export default function Cartao({navigation}) {
+export default function TranRealizada({navigation}) {
     return (
         <View style={styles.container}>
             <View style={styles.caixote}>
@@ -17,7 +17,7 @@ export default function Cartao({navigation}) {
 
                 <View style={styles.caixa}>
                     <Text
-                        style={styles.entrada}                       
+                        style={styles.sucesso}                       
                     >
                         TRANSFERÊNCIA REALIZADA COM SUCESSO!!
                     </Text>

@@ -12,31 +12,69 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center'
     },
+    caixote2: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '20px',
+    },
     img: {
-        width: "200px",
+        width: "300px",
         height: "200px",
+    },
+    card: {
+        padding: "5px",
+        display: "flex",
+        justifyContent: 'space-between',
+        width: "300px",
+        height: "200px",
+        backgroundColor: "white",
+        borderRadius: "15px",
     },
     texto:{
         fontSize: 18,
         color: 'white'
+    },
+    junto:{
+        padding: '10px',
+        flexDirection:'row',
+        display: 'flex',
+        justifyContent: 'space-between',
+    },
+    sozinho:{
+        display: 'flex',
+    },
+    numeroCard:{
+        textAlign: 'center',
+        fontSize: 18,
+        color: 'black'
     }, 
+    cvvCard:{
+        textAlign:'center',
+        fontSize: 18,
+        color: 'black'
+    }, 
+    validadeCard:{
+        textAlign:'center',
+        fontSize: 18,
+        color: 'black'
+    },  
     caixa:{
         padding: '20px',
     },
     entrada:{
         display: 'flex',
         padding: '1px',
-        fontSize: '15px',
+        fontSize: '30px',
         color: 'white',
         textAlign:'center',
         justifyContent: 'center'
     },
     botao:{
-        width: '120px',
-        height: '45px',
+        width: '180px',
+        height: '55px',
         borderRadius: '10px',
         padding: '10px',
-        backgroundColor: '#A4D2BC',
+        backgroundColor: '#0C633D',
         justifyContent: 'center',
         alignItems: 'center', 
     },

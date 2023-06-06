@@ -92,26 +92,6 @@ const Cadastro=({navigation})=> {
         console.log('function cadastrar:');
     }
 
-    // const btCadastro = () => {
-    //     if (semiSenha == password){
-    //         createUserWithEmailAndPassword(auth, email, password)
-    //         .then((userCredential) => {
-    //             const user = userCredential.user;
-    //             navigate('Create')
-    //             {upload()}
-    //         })
-    //         .catch((error) => {
-    //             const errorCode = error.code;
-    //             const errorMessage = error.message;
-    //             console.log(errorMessage)
-    //         });
-    //     }
-    //     else{
-    //         console.log('senha está incorreta')
-    //         alert('senha incorreta')
-    //     }
-    // }
-
     return (
         <View style={styles.container}>
 
