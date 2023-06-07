@@ -72,10 +72,10 @@ const Cadastro=({navigation})=> {
                                 ativa:ativa,
                                 saldo:saldo
                                 },{headers:{Authorization: 'JWT ' + res.data.access}},)
-                                .then((res) =>{
-                                    console.log(res.data);
-                                    navigation.navigate('Home')
-                                })
+                            .then((res) =>{
+                                console.log(res.data);
+                                navigation.navigate('Home')
+                            })
                         })    
                     })
                     

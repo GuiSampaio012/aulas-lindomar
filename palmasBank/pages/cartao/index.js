@@ -26,6 +26,15 @@ export default function Cartao({navigation}) {
         })
     },[token])
 
+    // const criarCartao = () => {
+    //     axios.post('http://127.0.0.1:8000/crud/cartao/',{
+            
+    //     })
+    //     .then((res) =>{
+    //         console.log(res.data);
+    //     })
+    // }
+
     useEffect(() => {
         pegartoken()
     }, [])
