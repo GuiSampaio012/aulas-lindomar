@@ -10,8 +10,8 @@ import Routers from './routers'
 
 export default function App() {
   return (
-    <TelaCartao/>
-    //<Routers/>
+    //<TelaCartao/>
+    <Routers/>
     //<Cartao/>
     //<TranRealizada/>
     //<Transferencia/>

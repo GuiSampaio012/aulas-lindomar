@@ -125,27 +125,28 @@ export default function Home() {
                     
                 <View style={styles.acoes}>
 
-                    <TouchableOpacity style={styles.itens}>
+                    <TouchableOpacity style={styles.itens} onPress={()=>navigation.navigate('Cartao')}>
                         <Text>
                             cartão de crédito
                         </Text>
                     </TouchableOpacity>
                   
+                    <TouchableOpacity style={styles.itens} onPress={()=>navigation.navigate('Emprestimo')}>
+                        <Text>
+                            emprestimo
+                        </Text>
+                    </TouchableOpacity>
+
+                </View>
+
+                <View style={styles.acoes}>               
+           
                     <TouchableOpacity style={styles.itens}>
                         <Text>
                             investimentos
                         </Text>
                     </TouchableOpacity>
-                </View>
 
-                <View style={styles.acoes}>               
-                    
-                    <TouchableOpacity style={styles.itens}>
-                        <Text>
-                            emprestimo
-                        </Text>
-                    </TouchableOpacity>
-                    
                     <TouchableOpacity style={styles.itens}>
                         <Text>
                             financias

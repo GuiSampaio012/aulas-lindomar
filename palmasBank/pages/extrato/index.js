@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles'
 import { TextInput } from 'react-native';
 import axios from 'axios';
+import Voltar from '../../voltar';
 
 export default function Extrato({navigation}) {
     const [saldoR, setSaldoR] = useState('')
@@ -52,33 +53,36 @@ export default function Extrato({navigation}) {
     }
 
     return (
-        <View style={styles.container}>
+        <>
+            <Voltar></Voltar>
+            <View style={styles.container}>
 
-            <View style={styles.guardarInfo}>  
-                {dadosTran.map((dadosTran) => (
-                    <View style={styles.container2} key={dadosTran.id}> 
-                        <table>
-                            <tr>
-                                <th>Valor enviado</th>
-                                <th>Conta pagadora</th>
-                                <th>Tipo de transferencia</th>
-                                <th>Conta remetente</th>
-                                <th>data da transação</th>
-                            </tr>
-                            <tr>
-                                <td><Text style={styles.entrada}>{dadosTran.valor_enviado}</Text></td>
-                                <td><Text style={styles.entrada}>{dadosTran.conta_transferencia}</Text></td>
-                                <td><Text style={styles.entrada}>{dadosTran.tipo}</Text></td>
-                                <td><Text style={styles.entrada}>{dadosTran.conta_remetente}</Text></td>
-                                <td><Text style={styles.entrada}>{dadosTran.data_hora}</Text></td>
-                            </tr>
-                        </table>
-                    </View>
-                ))}
-                   
+                <View style={styles.guardarInfo}>  
+                    {dadosTran.map((dadosTran) => (
+                        <View style={styles.container2} key={dadosTran.id}> 
+                            <table>
+                                <tr>
+                                    <th>Valor enviado</th>
+                                    <th>Conta pagadora</th>
+                                    <th>Tipo de transferencia</th>
+                                    <th>Conta remetente</th>
+                                    <th>data da transação</th>
+                                </tr>
+                                <tr>
+                                    <td><Text style={styles.entrada}>{dadosTran.valor_enviado}</Text></td>
+                                    <td><Text style={styles.entrada}>{dadosTran.conta_transferencia}</Text></td>
+                                    <td><Text style={styles.entrada}>{dadosTran.tipo}</Text></td>
+                                    <td><Text style={styles.entrada}>{dadosTran.conta_remetente}</Text></td>
+                                    <td><Text style={styles.entrada}>{dadosTran.data_hora}</Text></td>
+                                </tr>
+                            </table>
+                        </View>
+                    ))}
+                    
+                </View>
+                
             </View>
-            
-        </View>
+        </>
         
     )
 }

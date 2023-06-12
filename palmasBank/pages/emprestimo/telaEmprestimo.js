@@ -5,7 +5,7 @@ import { TextInput } from 'react-native';
 import TranRea from '../../assets/tranRea.png'
 import Voltar from '../../voltar';
 
-export default function TranRealizada({navigation}) {
+export default function TelaEmprestimo({navigation}) {
     return (
         <>
             <Voltar></Voltar>
@@ -22,13 +22,14 @@ export default function TranRealizada({navigation}) {
                         <Text
                             style={styles.sucesso}                       
                         >
-                            TRANSFERÊNCIA REALIZADA COM SUCESSO!!
+                            EMPRÉSTIMO REALIZADO COM SUCESSO!!
                         </Text>
                     </View>
                     
                 </View>
             </View>
         </>
+
         
     )
 }

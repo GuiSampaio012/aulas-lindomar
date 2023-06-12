@@ -40,7 +40,12 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
     },
+    conjunto:{
+        display: 'flex',
+        justifyContent: 'center',
+    },
     sozinho:{
+        marginTop:'85px',
         display: 'flex',
     },
     numeroCard:{

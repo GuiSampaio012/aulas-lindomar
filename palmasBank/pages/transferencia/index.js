@@ -3,8 +3,10 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles'
 import { TextInput } from 'react-native-web';
 import axios from 'axios';
+import Voltar from '../../voltar';
 
 export default function Transferencia({navigation}) {
+    const[contador, setContador] = useState(0)
     const refresh = () => window.location.reload(true)
     const [saldoR, setSaldoR] = useState('')
     const [contaPag,  setContaPag] = useState('')
@@ -21,6 +23,16 @@ export default function Transferencia({navigation}) {
     useEffect(() => {
         pegartoken()
     }, [])
+
+    // useEffect(() => {
+    //     const unsubscribe = navigation.addListener('focus', () => {
+    //       // Lógica ou chamada de função para atualizar os dados antes de renderizar
+    //       console.log('Página renderizada automaticamente!');
+    //     });
+    
+    //     // Limpeza do listener quando o componente é desmontado
+    //     return unsubscribe;
+    // }, [navigation]);
 
 
     useEffect(() =>{
@@ -86,7 +98,9 @@ export default function Transferencia({navigation}) {
             axios.post('http://127.0.0.1:8000/crud/transferencia/', historico_transferencia)
             .then((res)=>{
               if (res.status ==200 || res.status ==201) {
-                navigate(0)
+                // refresh()
+                setContador(contador + 1)
+                navigation.navigate('TranRealizada')
               }
             })
           }
@@ -102,6 +116,7 @@ export default function Transferencia({navigation}) {
 
     return (
     <>
+        <Voltar></Voltar>
         <View style={styles.container}>
             <View style={styles.caixaSaldo}>
                 <View style={styles.saldo}>

@@ -10,6 +10,10 @@ import Extrato from "./pages/extrato";
 import Cadastro from './pages/cadastro';
 import Transferencia from "./pages/transferencia";
 import TranRealizada from "./pages/transferencia/tranRealizada";
+import Cartao from './pages/cartao';
+import TelaCartao from './pages/cartao/telaCartao';
+import TelaEmprestimo from './pages/emprestimo/telaEmprestimo';
+import Emprestimo from './pages/emprestimo';
 
 const Pilha = createNativeStackNavigator()
 const Nav = createBottomTabNavigator()
@@ -96,7 +100,7 @@ export default function Routers(){
                 <Pilha.Screen
                     name="Cadastro"
                     component={Cadastro}
-                    options={{ title: 'Cadastro', headerShown: true }}
+                    options={{ title: 'Cadastro', headerShown: false }}
                 />
                 <Pilha.Screen
                     name="Home"
@@ -106,19 +110,34 @@ export default function Routers(){
                 <Pilha.Screen
                     name="Transferencia"
                     component={Transferencia}
-                    options={{ title: 'Transferência' }}
+                    options={{ title: 'Transferência', headerShown: false}}
                 />
                 {/* <Pilha.Screen
                     name="Emprestimo"
                     component={Emprestimo}
                     options={{ title: 'Emprestimo'}}
                 /> */}
-                {/* <Pilha.Screen
-                    name="Cartão de crédito"
+                <Pilha.Screen
+                    name="Cartao"
                     component={Cartao}
-                    options={{ title: 'Cartão de crédito' }}
+                    options={{ title: 'Cartão de crédito', headerShown: false }}
                 />
                 <Pilha.Screen
+                    name="TelaCartao"
+                    component={TelaCartao}
+                    options={{ title: 'Cartão de crédito', headerShown: false }}
+                />
+                <Pilha.Screen
+                    name="Emprestimo"
+                    component={Emprestimo}
+                    options={{ title: 'Empréstimo', headerShown:false }}
+                />
+                <Pilha.Screen
+                    name="TelaEmprestimo"
+                    component={TelaEmprestimo}
+                    options={{ title: 'Empréstimo Realizado', headerShown: false}}
+                />
+                 {/* <Pilha.Screen
                     name="Investimentos"
                     component={Investimentos}
                     options={{ title: 'Investimentos' }}
@@ -131,12 +150,12 @@ export default function Routers(){
                 <Pilha.Screen
                     name="TranRealizada"
                     component={TranRealizada}
-                    options={{ title: 'Transferência Realizada', headerShown: true }}
+                    options={{ title: 'Transferência Realizada', headerShown: false }}
                 />
                 <Pilha.Screen
                     name="Extrato"
                     component={Extrato}
-                    options={{ title: 'Extrato' }} 
+                    options={{ title: 'Extrato', headerShown: false }} 
                 />
 
             </Pilha.Navigator>

@@ -4,6 +4,7 @@ import styles from './styles'
 import { TextInput } from 'react-native';
 import Card from '../../assets/Card.png'
 import axios from 'axios';
+import Voltar from '../../voltar';
 
 export default function TelaCartao({navigation}) {
     const[token, setToken] = useState('')
@@ -40,36 +41,40 @@ export default function TelaCartao({navigation}) {
     }
 
     return (
-        <View style={styles.container}>
-            <View style={styles.caixote}>
+        <>
+            <Voltar></Voltar>
+            <View style={styles.container}>
+                <View style={styles.caixote}>
 
-                <View style={styles.caixa}>
+                    <View style={styles.caixa}>
 
-                    <View style={styles.card}> 
-                        <View style={styles.sozinho}>
-                            <Text style={styles.numeroCard}>numero</Text>
+                        <View style={styles.card}> 
+                            <View style={styles.sozinho}>
+                                <Text style={styles.numeroCard}>numero</Text>
+                            </View>
+                            <View style={styles.junto}>
+                                <Text style={styles.cvvCard}>cvv</Text>
+                                <Text style={styles.validadeCard}>validade</Text>
+                            </View>
                         </View>
-                        <View style={styles.junto}>
-                            <Text style={styles.cvvCard}>cvv</Text>
-                            <Text style={styles.validadeCard}>validade</Text>
+                        
+                    </View>
+
+                    <View style={styles.caixa}>
+                        <Text style={styles.entrada}>
+                            deseja solicitar um cartão de crédito para você ?
+                        </Text>
+                        <View style={styles.caixote2}>
+                            <TouchableOpacity style={styles.botao}>
+                                <Text style={styles.texto}>Solicite o seu cartão</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     
                 </View>
-
-                <View style={styles.caixa}>
-                    <Text style={styles.entrada}>
-                        deseja solicitar um cartão de crédito para você ?
-                    </Text>
-                    <View style={styles.caixote2}>
-                        <TouchableOpacity style={styles.botao}>
-                            <Text style={styles.texto}>Solicite o seu cartão</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                
             </View>
-        </View>
+        </>
+        
         
     )
 }

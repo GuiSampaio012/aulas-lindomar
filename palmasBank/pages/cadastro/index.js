@@ -4,6 +4,7 @@ import styles from './styles'
 import Arvores from '../../assets/images-removebg-preview.png'
 import { useNavigation } from '@react-navigation/native'
 import axios from 'axios'
+import Voltar from '../../voltar'
 
 const Cadastro=({navigation})=> {
     const navigate = useNavigation()
@@ -93,104 +94,106 @@ const Cadastro=({navigation})=> {
     }
 
     return (
-        <View style={styles.container}>
-
-            <View style={styles.caixote}>
-                <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Nome'
-                        onChangeText={(e) => {setNome(e)}}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Cpf'
-                        onChangeText={(e) => {setCpf(e)}}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Data de Nascimento'
-                        onChangeText={(e) => {setData_nascimento(e)}}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Celular'
-                        onChangeText={(e) => {setCelular(e)}}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        style={styles.entrada}
-                        placeholder='Email'
-                        keyboardType='email'
-                        onChangeText={(e) => setEmail(e)}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        secureTextEntry={true}
-                        style={styles.entrada}
-                        placeholder='Senha'
-                        keyboardType='text'
-                        onChangeText={(e) => setSemiSenha(e)}
-                    />
-                </View>
-
-                <View style={styles.caixa}>
-                    <TextInput
-                        secureTextEntry={true}
-                        style={styles.entrada}
-                        placeholder='Confirme a Senha'
-                        keyboardType='text'
-                        onChangeText={(e) => setPassword(e)}
-                    />
-                </View>
-
-                {/* <View style={styles.caixa}> 
-                    <View style={styles.foto0}>
-                        <img src={preview} style={styles.foto1} />
-                    </View>
-
-                    <View style={styles.entrada}>
-                        <input
-                            type='file'
-                            onChange={e => {
-                            setImage(e.target.files[0])
-                            }}
+        <>
+            <Voltar></Voltar>
+            <View style={styles.container}>
+                <View style={styles.caixote}>
+                    <View style={styles.caixa}>
+                        <TextInput
+                            style={styles.entrada}
+                            placeholder='Nome'
+                            onChangeText={(e) => {setNome(e)}}
                         />
                     </View>
 
-                    <View>
-                        <Text style={styles.sucesso}>{texto}</Text>
-                    </View> 
-                </View> */}
+                    <View style={styles.caixa}>
+                        <TextInput
+                            style={styles.entrada}
+                            placeholder='Cpf'
+                            onChangeText={(e) => {setCpf(e)}}
+                        />
+                    </View>
 
-                <View style={styles.caixa}>
-                    <TouchableOpacity
-                        style={styles.botao}
-                        onPress = {() => cadastrar()}
-                    >
-                        <Text style={styles.texto}>Cadastrar</Text>
-                    </TouchableOpacity>
+                    <View style={styles.caixa}>
+                        <TextInput
+                            style={styles.entrada}
+                            placeholder='Data de Nascimento'
+                            onChangeText={(e) => {setData_nascimento(e)}}
+                        />
+                    </View>
+
+                    <View style={styles.caixa}>
+                        <TextInput
+                            style={styles.entrada}
+                            placeholder='Celular'
+                            onChangeText={(e) => {setCelular(e)}}
+                        />
+                    </View>
+
+                    <View style={styles.caixa}>
+                        <TextInput
+                            style={styles.entrada}
+                            placeholder='Email'
+                            keyboardType='email'
+                            onChangeText={(e) => setEmail(e)}
+                        />
+                    </View>
+
+                    <View style={styles.caixa}>
+                        <TextInput
+                            secureTextEntry={true}
+                            style={styles.entrada}
+                            placeholder='Senha'
+                            keyboardType='text'
+                            onChangeText={(e) => setSemiSenha(e)}
+                        />
+                    </View>
+
+                    <View style={styles.caixa}>
+                        <TextInput
+                            secureTextEntry={true}
+                            style={styles.entrada}
+                            placeholder='Confirme a Senha'
+                            keyboardType='text'
+                            onChangeText={(e) => setPassword(e)}
+                        />
+                    </View>
+
+                    {/* <View style={styles.caixa}> 
+                        <View style={styles.foto0}>
+                            <img src={preview} style={styles.foto1} />
+                        </View>
+
+                        <View style={styles.entrada}>
+                            <input
+                                type='file'
+                                onChange={e => {
+                                setImage(e.target.files[0])
+                                }}
+                            />
+                        </View>
+
+                        <View>
+                            <Text style={styles.sucesso}>{texto}</Text>
+                        </View> 
+                    </View> */}
+
+                    <View style={styles.caixa}>
+                        <TouchableOpacity
+                            style={styles.botao}
+                            onPress = {() => cadastrar()}
+                        >
+                            <Text style={styles.texto}>Cadastrar</Text>
+                        </TouchableOpacity>
+                    </View>
+                    
+                    {/* <TouchableOpacity style={styles.btn} onPress={upload}>
+                        <Text style={styles.texto}>Upload</Text>
+                    </TouchableOpacity> */}
                 </View>
-                
-                {/* <TouchableOpacity style={styles.btn} onPress={upload}>
-                    <Text style={styles.texto}>Upload</Text>
-                </TouchableOpacity> */}
-            </View>
 
-        </View>
+            </View>
+        </>
     )
 }
 export default Cadastro;

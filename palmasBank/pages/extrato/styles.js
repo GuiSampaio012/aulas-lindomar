@@ -63,6 +63,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
     container2: {
+        justifyContent: 'center',
         backgroundColor:'#0C633D',
         flexDirection: 'row',
         padding: '3px',
