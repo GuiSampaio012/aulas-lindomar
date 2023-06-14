@@ -139,8 +139,8 @@ export default function Home() {
 
                 </View>
 
-                <View style={styles.acoes}>               
-           
+                {/* <View style={styles.acoes}>               
+        
                     <TouchableOpacity style={styles.itens}>
                         <Text>
                             investimentos
@@ -152,7 +152,7 @@ export default function Home() {
                             financias
                         </Text>
                     </TouchableOpacity>
-                </View>    
+                </View>     */}
                     
                     {/* <View style={styles.itens}>
                         transferencias

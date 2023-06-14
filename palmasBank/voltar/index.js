@@ -14,7 +14,7 @@ export default function Voltar(){
                 <View style={styles.figura}>
 
                     <TouchableOpacity
-                    onPress={()=>navigation.navigate('Home')}
+                    onPress={()=>navigation.navigate('NavBar')}
                     >
                         <Fontisto name={'arrow-left'} size={35} color='black'/>
                     </TouchableOpacity>

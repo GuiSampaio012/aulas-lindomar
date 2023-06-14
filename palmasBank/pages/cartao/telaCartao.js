@@ -16,11 +16,9 @@ export default function TelaCartao({navigation}) {
             console.log(response.data)
             axios.get(`http://127.0.0.1:8000/crud/clientes/${response.data.id}`, {headers:{Authorization: 'JWT ' + token}}).then((res) =>{
                 console.log(res.data)
-                axios.get(`http://127.0.0.1:8000/crud/contas/?filtro=${response.data.id}`, {headers:{Authorization: 'JWT ' + token}}).then((response) => {
+                axios.get(`http://127.0.0.1:8000/crud/cartao/?filtro=${response.data.id}`, {headers:{Authorization: 'JWT ' + token}}).then((response) => {
                     console.log(response.data)
                     setTeste(response['data'][0])
-                    console.log(teste.cliente_conta)
-                    setSaldoR(response['data'][0]['saldo'])
                 })
             })
 
@@ -62,13 +60,13 @@ export default function TelaCartao({navigation}) {
 
                     <View style={styles.caixa}>
                         <Text style={styles.entrada}>
-                            deseja solicitar um cartão de crédito para você ?
+                           Parabéns, agora este é o seu cartão
                         </Text>
-                        <View style={styles.caixote2}>
+                        {/* <View style={styles.caixote2}>
                             <TouchableOpacity style={styles.botao}>
                                 <Text style={styles.texto}>Solicite o seu cartão</Text>
                             </TouchableOpacity>
-                        </View>
+                        </View> */}
                     </View>
                     
                 </View>

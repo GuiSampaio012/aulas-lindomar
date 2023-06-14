@@ -26,7 +26,7 @@ export default function Login() {
           password: senha
         }).then((res) =>{ 
             localStorage.setItem('dados',JSON.stringify(res.data))
-            navigation.navigate('Home')
+            navigation.navigate('NavBar')
             // setLogado(true)
         })
         console.log(login)

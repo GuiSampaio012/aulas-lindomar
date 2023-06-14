@@ -1,4 +1,4 @@
-import {NavigationContainer} from '@react-navigation/native';
+import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {Feather} from '@expo/vector-icons'
@@ -14,11 +14,13 @@ import Cartao from './pages/cartao';
 import TelaCartao from './pages/cartao/telaCartao';
 import TelaEmprestimo from './pages/emprestimo/telaEmprestimo';
 import Emprestimo from './pages/emprestimo';
+import { useEffect } from 'react';
 
 const Pilha = createNativeStackNavigator()
 const Nav = createBottomTabNavigator()
 
 function NavBar(){
+
     return(
         <Nav.Navigator
             screenOptions={{
@@ -28,7 +30,7 @@ function NavBar(){
                     paddingBottom: 1,
                     paddingTop: 1,
                 },
-                tabBarActiveTintColor:'#f0f',
+                tabBarActiveTintColor:'#3D8C64',
                 tabBarInactiveTintColor: '#555',
             }}
         >
@@ -37,7 +39,8 @@ function NavBar(){
                     headerShown: false,
                     tabBarIcon: ({size, color})=>(
                         <Feather name="home" size={size} color={color}/>
-                    )
+                    ),
+                    unmountOnBlur: true
                 }}
             />
 
@@ -60,7 +63,7 @@ function NavBar(){
                 }}
             /> */}
 
-            <Nav.Screen name="Read" component={Read}
+            {/* <Nav.Screen name="Read" component={Read}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({size, color})=>(
@@ -75,7 +78,7 @@ function NavBar(){
                         <Feather name="trash-2" size={size} color={color}/>
                     )
                 }}
-            />
+            /> */}
 
             
         </Nav.Navigator>
@@ -86,16 +89,16 @@ export default function Routers(){
     return(
         <NavigationContainer>
             <Pilha.Navigator>
-                <Pilha.Screen
-                    name="NavBar"
-                    component={NavBar}
-                    options={{ title: '', headerShown: false }}
-                />
                 {/* para deixar o login sem aparecer a navbar, deixar ele em primeiro */}
                 <Pilha.Screen
                     name="Login"
                     component={Login}
                     options={{ title: 'Login', headerShown: false }}
+                />
+                <Pilha.Screen
+                    name="NavBar"
+                    component={NavBar}
+                    options={{ title: '', headerShown: false }}
                 />
                 <Pilha.Screen
                     name="Cadastro"
@@ -105,18 +108,15 @@ export default function Routers(){
                 <Pilha.Screen
                     name="Home"
                     component={Home}
-                    options={{ title: 'Home', headerShown: false }}
+                    options={{ title: 'Home', headerShown: false, unmountOnBlur: true }}
+                    
+                    
                 />
                 <Pilha.Screen
                     name="Transferencia"
                     component={Transferencia}
                     options={{ title: 'Transferência', headerShown: false}}
                 />
-                {/* <Pilha.Screen
-                    name="Emprestimo"
-                    component={Emprestimo}
-                    options={{ title: 'Emprestimo'}}
-                /> */}
                 <Pilha.Screen
                     name="Cartao"
                     component={Cartao}
@@ -137,16 +137,6 @@ export default function Routers(){
                     component={TelaEmprestimo}
                     options={{ title: 'Empréstimo Realizado', headerShown: false}}
                 />
-                 {/* <Pilha.Screen
-                    name="Investimentos"
-                    component={Investimentos}
-                    options={{ title: 'Investimentos' }}
-                />
-                <Pilha.Screen
-                    name="Financias"
-                    component={Financias}
-                    options={{ title: 'Financias' }}
-                />*/}
                 <Pilha.Screen
                     name="TranRealizada"
                     component={TranRealizada}
